@@ -1,5 +1,5 @@
 # HariJawa
-HariJawa.pas berisi fungsi untuk mencari hari, pasaran, wuku, paringkelan, jenis tahun, dan jenis windu dari suatu tanggal Jawa.
+Unit _HariJawa.pas_ berisi fungsi untuk mencari hari, pasaran, wuku, paringkelan, jenis tahun, dan jenis windu dari suatu tanggal Jawa.
 
 __Contoh cuplikan kode penggunaan:__
 ```pascal
