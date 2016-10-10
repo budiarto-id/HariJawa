@@ -1,3 +1,4 @@
+//Created by: Arif Budiarto
 unit HariJawa;
 
 interface
@@ -51,42 +52,23 @@ const
   arrDina : array[0..6] of string = ('Selasa', 'Rebo', 'Kemis','Jemuwah', 'Setu', 'Ngahad', 'Senen');
 begin
   windu := ((strtoint(edTahun.Text)-2) mod 32) div 8;
-  lblWindu.Caption := arrWindu[windu];
+  
   tahun := strtoint(edTahun.Text) mod 8;
-  lblTahun.Caption := arrTahun[tahun];
+  
   dina := (arrNeptuTahunA[tahun] + arrNeptuSasiA[comboSasi.ItemIndex] - 2 + strtoint(edTanggal.Text)) mod 7;
-  lblDina.Caption := arrDina[dina];
-  lblPasaran.Caption := arrPasaran[(arrNeptuTahunB[tahun] + arrNeptuSasiB[comboSasi.ItemIndex] - 2 + strtoint(edTanggal.Text)) mod 5];
+  
   neptuDina := ndTahun[tahun] + ndSasi[comboSasi.ItemIndex] + strtoInt(edTanggal.Text) - 1;
   masaWuku := nmWindu[windu] + nmTahun[tahun] + nmSasi[comboSasi.ItemIndex] + (neptuDina div 35);
   masaWuku := masaWuku mod 12;
   neptuDina := neptuDina mod 35;
   wuku := (masaWuku * 5 + (neptuDina + 1) div 7 + 8)mod 30;
-  lblWuku.Caption := inttostr(wuku+1)+'. '+arrWuku[wuku]+';'+inttostr(wuku)+';'+inttostr(masaWuku)+';'+inttostr(neptuDina);
-  lblParingkelan.Caption := arrParingkelan[wuku mod 6];
-  dina := (dina + 2) mod 7;
-  if (wuku=0) and (dina<4) then
-  begin
-    padangon := 0;
-  end
-  else
-  begin
-    padangon := (wuku*7 + dina - 3) mod 9;
-  end;
-  lblPadangon.Caption := inttostr(padangon)+'. '+arrPadangon[padangon];
-  if (wuku=10) and (dina<3) then
-  begin
-    padewan := 6;
-  end
-  else if wuku<10 then
-  begin
-    padewan := (wuku*7 + dina) mod 8;
-  end
-  else
-  begin
-    padewan := (wuku*7 + dina - 2) mod 8;
-  end;
-  lblPadewan.Caption := inttostr(padewan)+'. '+arrPadewan[padewan];
+  
+  result.JawaWindu := arrWindu[windu];
+  result.JawaTahun := arrTahun[tahun];
+  result.JawaDina  := arrDina[dina];
+  result.JawaPasaran := arrPasaran[(arrNeptuTahunB[tahun] + arrNeptuSasiB[comboSasi.ItemIndex] - 2 + strtoint(edTanggal.Text)) mod 5];
+  result.JawaWuku := arrWuku[wuku];
+  result.JawaParingkelan := arrParingkelan[wuku mod 6];
  end;
 
 end.
